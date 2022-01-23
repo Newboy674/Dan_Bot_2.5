@@ -12,7 +12,7 @@ from discord.components import SelectOption
 from discord.commands import slash_command
 from discord.gateway import DiscordClientWebSocketResponse
 
-test
+test 2
 
 bot = discord.Bot()
 
