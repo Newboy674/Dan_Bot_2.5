@@ -12,6 +12,8 @@ from discord.components import SelectOption
 from discord.commands import slash_command
 from discord.gateway import DiscordClientWebSocketResponse
 
+test
+
 bot = discord.Bot()
 
 @bot.event
