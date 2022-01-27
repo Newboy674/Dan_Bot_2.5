@@ -19,7 +19,7 @@ bot = discord.Bot()
 async def on_ready():
     print(f"We have logged in as {bot.user}")
 
-@bot.slash_command(name="roll", description= "Rolls a dice up to a specefied number", guild_ids=[792290455752146954])
+@bot.slash_command(name="roll_dice", description= "Rolls a dice up to a specefied number", guild_ids=[792290455752146954])
 async def Dice_roll(ctx):
 
     #Button formatting below
@@ -28,11 +28,11 @@ async def Dice_roll(ctx):
         style=discord.ButtonStyle.blurple,
     )
     btn2 = Button(
-        label="This is also a button???",
+        label="Roll up to 20",
         style=discord.ButtonStyle.red,
     )
     btn3 = Button(
-        label="This is epic",
+        label="Custom",
         style=discord.ButtonStyle.success,
     )
     view = View()
@@ -44,11 +44,19 @@ async def Dice_roll(ctx):
     #Can be named whatever
    #         l
    #         v
-    number6 = random.randint(1, 5)
+    number6 = random.randint(1, 6)
     async def btn1click(interaction: discord.Interaction):
         await interaction.response.send_message(f'Your number is, {number6}')
+        # btn1 = Button(
+        #     disabled=True
+        # )
+        btn.callback = btn1click   #Assigns the button varible to the button click callback (makes button allign with right click function)
 
-    btn.callback = btn1click   #Assigns the button varible to the button click callback
+    async def btn2click(interaction: discord.Interaction):
+        number20 = random.randrange(1,20)
+        await interaction.response.send_message(f'Your number is, {number20}')
+        btn2.callback = btn2click
+
 
     await ctx.respond("Does this work?", view=view)
 

@@ -4,7 +4,9 @@ DISCORD BOT IDEAS: Make a calculator out of the discord buttons (Button commands
 
 Make it so you press a button, and it gives you permissions to use a certian command (Prob epic command)
 
+Make it so when u press button it gets disables
 
+Optimise the roll commend (Instead of "(1,2,3,4,5,6)", Make it custumisable. (Maybe with the option thing, black prompt thing, y know what im talkin about)
 
 Tips for me:
 
