@@ -1,14 +1,36 @@
+wrong
+    async def btn1click(interaction: discord.Interaction):
+        btn.disabled = True
+        await interaction.response.edit_message(view=view)
+        number6 = random.randrange(1,6)
+        await interaction.followup.send(f'Your number is, {number6}')
+
+right
+    async def btn1click(interaction: discord.Interaction):
+        btn.disabled = True
+        await interaction.response.edit_message(view=view)
+        number6 = random.randint(1, 6)
+        await interaction.followup.send(f'Your number is, {number6}')
+
+
+
+
 
 
 DISCORD BOT IDEAS: Make a calculator out of the discord buttons (Button commands)
 
 Make it so you press a button, and it gives you permissions to use a certian command (Prob epic command)
+##### Make it so when u press button it gets disables
+##### Optimise the roll commend (Instead of "(1,2,3,4,5,6)", Make it custumisable. (Maybe with the option thing, black prompt thing, y know what im talkin about)
 
-Make it so when u press button it gets disables
 
-Optimise the roll commend (Instead of "(1,2,3,4,5,6)", Make it custumisable. (Maybe with the option thing, black prompt thing, y know what im talkin about)
 
 Tips for me:
+
+USEFUL VIDEO: https://www.youtube.com/watch?v=4CU0dm7rZ6o
+GOOD PARTS: 19:40
+
+
 
 Example:
 

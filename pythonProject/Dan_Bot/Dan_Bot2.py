@@ -44,18 +44,21 @@ async def Dice_roll(ctx):
     #Can be named whatever
    #         l
    #         v
-    number6 = random.randint(1, 6)
     async def btn1click(interaction: discord.Interaction):
-        await interaction.response.send_message(f'Your number is, {number6}')
-        # btn1 = Button(
-        #     disabled=True
-        # )
-        btn.callback = btn1click   #Assigns the button varible to the button click callback (makes button allign with right click function)
+        btn.disabled = True
+        await interaction.response.edit_message(view=view)
+        number6 = random.randrange(1,6)
+        await interaction.followup.send(f'Your number is, {number6}')
 
     async def btn2click(interaction: discord.Interaction):
+        btn2.disabled = True
+        await interaction.response.edit_message(view=view)
         number20 = random.randrange(1,20)
-        await interaction.response.send_message(f'Your number is, {number20}')
-        btn2.callback = btn2click
+        await interaction.followup.send(f'Your number is, {number20}')
+
+
+    btn.callback = btn1click #Assigns the button varible to the button click callback (makes button allign with correct click function)
+    btn2.callback = btn2click
 
 
     await ctx.respond("Does this work?", view=view)
