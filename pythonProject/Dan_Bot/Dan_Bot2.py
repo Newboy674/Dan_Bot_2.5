@@ -46,13 +46,15 @@ async def Dice_roll(ctx):
    #         v
     async def btn1click(interaction: discord.Interaction):
         btn.disabled = True
+        btn3.disabled = True
         await interaction.response.edit_message(view=view)
         number6 = random.randrange(1,6)
         await interaction.followup.send(f'Your number is, {number6}')
 
     async def btn2click(interaction: discord.Interaction):
-        btn2.disabled = True                                   #To disable buttom
-        await interaction.response.edit_message(view=view)     #Also to disable button
+        btn2.disabled = True #To disable button
+        btn3.disabled = True #Can pick button
+        await interaction.response.edit_message(view=view)     #Also to disable button (Neccecary!!!)
         number20 = random.randrange(1,20)
         await interaction.followup.send(f'Your number is, {number20}')  #Use followup if you edit a message
 
