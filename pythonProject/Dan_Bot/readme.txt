@@ -1,3 +1,5 @@
+figure out why did didnt work me
+
 wrong
     async def btn1click(interaction: discord.Interaction):
         btn.disabled = True
@@ -12,16 +14,24 @@ right
         number6 = random.randint(1, 6)
         await interaction.followup.send(f'Your number is, {number6}')
 
+#Update: It was because one is random.randint and the other is random.randrange
 
 
 
 
 
-DISCORD BOT IDEAS: Make a calculator out of the discord buttons (Button commands)
+DISCORD BOT IDEAS:
+##### Make a calculator out of the discord buttons (Button commands)
+      Make this calculator edit/update in real time so others see what ur doin
 
-Make it so you press a button, and it gives you permissions to use a certian command (Prob epic command)
+##### Figure out how dropdowns work and do ufnky stuff with em!
+
+##### Funny image editor/edits (Using pillow rn)
+##### Make it so you press a button, and it gives you permissions to use a certian command (Prob epic command)
 ##### Make it so when u press button it gets disables
 ##### Optimise the roll commend (Instead of "(1,2,3,4,5,6)", Make it custumisable. (Maybe with the option thing, black prompt thing, y know what im talkin about)
+##### Fake Econemy or stock looker
+#####
 
 
 
@@ -29,6 +39,9 @@ Tips for me:
 
 USEFUL VIDEO: https://www.youtube.com/watch?v=4CU0dm7rZ6o
 GOOD PARTS: 19:40
+
+USEFUL LINKS:
+https://easy-pil.readthedocs.io/en/latest/pages/intro.html
 
 
 
