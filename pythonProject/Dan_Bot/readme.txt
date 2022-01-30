@@ -40,8 +40,12 @@ Tips for me:
 USEFUL VIDEO: https://www.youtube.com/watch?v=4CU0dm7rZ6o
 GOOD PARTS: 19:40
 
+https://www.youtube.com/watch?v=JeznW_7DlB0&list=PLY5Btrw0xVmuxOJmqIZMR8HcXDNIKYjOK&index=5
+GOOD PARTS: 32:00~
+
 USEFUL LINKS:
 https://easy-pil.readthedocs.io/en/latest/pages/intro.html
+
 
 
 

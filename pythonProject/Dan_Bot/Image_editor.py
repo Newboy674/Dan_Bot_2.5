@@ -17,8 +17,9 @@ bot = discord.Bot()
 
 
 class Image_menu:
-    def __init__(self, ctx, view):
-        pass
+    def __init__(self, ctx):
+        self.ctx = ctx
+        self.view = view
 
         def test(self):
 
