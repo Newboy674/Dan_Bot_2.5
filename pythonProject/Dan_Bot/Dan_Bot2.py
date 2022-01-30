@@ -14,12 +14,12 @@ from discord.components import SelectOption
 from discord.commands import slash_command
 from discord.gateway import DiscordClientWebSocketResponse
 from easy_pil import Editor, Canvas, load_image_async
-# from Image editor import Image_menu
+from Image_editor import Image_menu
 
 import random
 
 bot = discord.Bot()
-#DanImage = Image_menu(ctx)
+DanImage = Image_menu()
 
 
 
@@ -27,18 +27,17 @@ bot = discord.Bot()
 async def on_ready():
     print(f"We have logged in as {bot.user}")
 
-@bot.slash_command(name="test_img", description="Should post an image of your avatar", guild_ids=[792290455752146954])
-async def Test_Image(ctx):
 
-    profile = await load_image_async(ctx.author.display_avatar.url)
+@bot.slash_command(name="your_avatar", description="Should post an image of your avatar", guild_ids=[792290455752146954])
 
-    editor = Editor(profile).circle_image()
-    editor = Editor(profile).resize([200,200],crop=False)    #Help from ---  https://easy-pil.readthedocs.io/en/latest/easy_pil/easy_pil.editor.html
+async def your_avatar(ctx):
 
+    DanImage.preset_image()
 
-    file = File(fp=editor.image_bytes, filename='work.png')
+    file = File(fp=editor.image_bytes, filename='imagine reading this lol.png')
 
     await ctx.send(file=file)
+    await ctx.respond("Lookin drippy")
 
 
 
