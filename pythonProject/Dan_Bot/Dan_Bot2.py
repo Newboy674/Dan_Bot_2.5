@@ -1,6 +1,6 @@
 from os import name
+from datetime import datetime, date, time, timezone, tzinfo, timedelta
 import discord
-#rom discord import bot
 from discord import File
 from discord import Option
 from discord.ui import Button
@@ -28,21 +28,27 @@ async def on_ready():
     print(f"We have logged in as {bot.user}")
 
 
+# @bot.slash_command(name="timeset", description="Sets the time zone for the time command",guild_ids=[792290455752146954])
+
+
+@bot.slash_command(name="time", description="gives the time, based off of the time zone set command", guild_ids=[792290455752146954])
+async def time(ctx):
+    time = datetime.timetuple()
+    for time_type in time:
+        bruh = bruh + time_type
+
+    await ctx.respond(bruh)
+
+
 @bot.slash_command(name="your_avatar", description="Should post an image of your avatar", guild_ids=[792290455752146954])
 
 async def your_avatar(ctx):
-
-    DanImage.preset_image()
-
+    profile = await load_image_async(ctx.author.display_avatar.url)
+    editor = Editor(profile).circle_image()
+    editor = Editor(profile).resize([200, 200],crop=True)  # Help from ---  https://easy-pil.readthedocs.io/en/latest/easy_pil/easy_pil.editor.html
     file = File(fp=editor.image_bytes, filename='imagine reading this lol.png')
 
     await ctx.send(file=file)
-    await ctx.respond("Lookin drippy")
-
-
-
-
-
 @bot.slash_command(name="roll_dice", description="Rolls a dice up to a specefied number",
                    guild_ids=[792290455752146954])
 async def Dice_roll(ctx):

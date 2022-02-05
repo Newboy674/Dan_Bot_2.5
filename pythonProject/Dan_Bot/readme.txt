@@ -27,6 +27,8 @@ DISCORD BOT IDEAS:
 ##### Figure out how dropdowns work and do ufnky stuff with em!
 
 ##### Funny image editor/edits (Using pillow rn)
+##### Make it so that when u press a button, it scrolls between the image edits
+##### Make it so that when u press a button, it changes what time the bot it gives you (Year, month, day)
 ##### Make it so you press a button, and it gives you permissions to use a certian command (Prob epic command)
 ##### Make it so when u press button it gets disables
 ##### Optimise the roll commend (Instead of "(1,2,3,4,5,6)", Make it custumisable. (Maybe with the option thing, black prompt thing, y know what im talkin about)
@@ -45,6 +47,8 @@ GOOD PARTS: 32:00~
 
 USEFUL LINKS:
 https://easy-pil.readthedocs.io/en/latest/pages/intro.html
+
+https://docs.python.org/3/library/datetime.html#examples-of-usage-datetime
 
 
 
