@@ -4,7 +4,7 @@ class Solution:
         self.nums = nums
         self.target = target
 
-        def twoSum(self, nums, target):  # -> List[int]:
+    def twoSum(self, nums, target):  # -> List[int]:
             number_order1 = -1
             number_order2 = -1
 
@@ -23,11 +23,11 @@ class Solution:
 
 
 
-
+solution = Solution()      #This took a while to add holy... makes the class a callable
 
 test_number_list=[5, 7, 2, 9]
 target = 11
 
-Result = Solution.twoSum(test_number_list, target)
+Result = solution.twoSum(test_number_list, target)
 
 print(Result)
