@@ -14,7 +14,7 @@ class Solution:
                             number2 = number
                             number_order2 = nums.index(number)
 
-                            if number1 + number2 == target and number1 != number2:
+                            if number1 + number2 == target and number_order1 != number_order2:
                                 result = [number_order1, number_order2]
                                 return result
 
