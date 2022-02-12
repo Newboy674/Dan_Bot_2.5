@@ -14,7 +14,7 @@ class Solution:
                             number2 = number
                             number_order2 = nums.index(number)
 
-                            if number1 + number2 == target:
+                            if number1 + number2 == target and number1 != number2:
                                 result = [number_order1, number_order2]
                                 return result
 
@@ -22,8 +22,8 @@ class Solution:
 
 
 
-test_number_list=[5,2,9,5,7]
-target = 11
+test_number_list=[3,2,4,6]
+target = 6
 
 Result = Solution.twoSum(test_number_list, target)
 
