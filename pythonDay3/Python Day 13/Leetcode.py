@@ -1,20 +1,24 @@
-##https://leetcode.com/problems/two-sum/discuss/1754104/Not-the-most-efficient-but-very-easy-to-understand-in-Java
+##https://leetcode.com/problems/two-sum/submissions/
+class Solution:
+    def __init__(self, nums, target):
+        self.nums = nums
+        self.target = target
 
-def twoSum(nums, target):  # -> List[int]:
-        number_order1 = -1
-        number_order2 = -1
-
-        for number in nums:
-            number_order1 = number_order1 + 1
-            number1 = number
+        def twoSum(self, nums, target):  # -> List[int]:
+            number_order1 = -1
+            number_order2 = -1
 
             for number in nums:
-                number_order2 = number_order2 + 1
-                number2 = number
+                    number_order1 = number_order1 + 1
+                    number1 = number
 
-                if number1 + number2 == target:
-                    result = [number_order1, number_order2]
-                    return result
+                    for number in nums:
+                            number_order2 = number_order2 + 1
+                            number2 = number
+
+                            if number1 + number2 == target:
+                                result = [number_order1, number_order2]
+                                return result
 
 
 
@@ -24,4 +28,6 @@ def twoSum(nums, target):  # -> List[int]:
 test_number_list=[5, 7, 2, 9]
 target = 11
 
-twoSum(test_number_list, target)
+Result = Solution.twoSum(test_number_list, target)
+
+print(Result)
