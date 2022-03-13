@@ -35,6 +35,11 @@ DISCORD BOT IDEAS:
 ##### Fake Econemy or stock looker
 #####
 
+##### Make wordle, or tetris
+
+###### Make cool web game, black background
+###### white graphics only, with some cool exeptions. When something goes to edge of screen, it immediately (smoothly) teleports to opposite edge
+###### Not really a game, but a thing to play around in i guess
 
 
 Tips for me:
@@ -46,6 +51,9 @@ https://www.youtube.com/watch?v=JeznW_7DlB0&list=PLY5Btrw0xVmuxOJmqIZMR8HcXDNIKY
 GOOD PARTS: 32:00~
 
 USEFUL LINKS:
+
+https://www.youtube.com/c/NeuralNine/videos - GO TO BOTTEM
+
 https://easy-pil.readthedocs.io/en/latest/pages/intro.html
 
 https://docs.python.org/3/library/datetime.html#examples-of-usage-datetime

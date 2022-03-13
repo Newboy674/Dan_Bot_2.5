@@ -30,14 +30,16 @@ async def on_ready():
 
 # @bot.slash_command(name="timeset", description="Sets the time zone for the time command",guild_ids=[792290455752146954])
 
+#@bot.slash_Command(name="Roman Converter", description="Give it roman numbers", guild_ids=[792290455752146954])
+
+
 
 @bot.slash_command(name="time", description="gives the time, based off of the time zone set command", guild_ids=[792290455752146954])
 async def time(ctx):
-    time = datetime.timetuple()
-    for time_type in time:
-        bruh = bruh + time_type
+    if timezone = 0:
+       time = datetime.now(tz=none)
 
-    await ctx.respond(bruh)
+    await ctx.respond(time)
 
 
 @bot.slash_command(name="your_avatar", description="Should post an image of your avatar", guild_ids=[792290455752146954])
