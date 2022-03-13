@@ -1,16 +1,28 @@
 https://leetcode.com/problems/roman-to-integer/
 
+
 @classmethod
 class Solution:
+
     def romanToInt(self, s):
+        value = 0
 
-        diget_count = len(s)
-
-        [diget_count]
-        RomanI = 1
+        if "M" in s:
 
 
-        return Awnser
+            value = value + 1000
+
+
+        if "V" in s:
+
+        elif "VI" in s:
+        elif "VII" in s:
+
+        else:
+
+            value = value + 5
+
+        return Answer
 
 
 
