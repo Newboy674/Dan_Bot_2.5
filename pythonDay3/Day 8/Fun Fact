@@ -1,0 +1,3 @@
+print file.Read  prints the files stuff as one whole glob of stuff... as one string
+print file.readline prints the files stuff line by line, doing it again does the next line. can also specify line
+print file.readlines prints the files stuff in a list like this ----> ["ooga", "booga"]
