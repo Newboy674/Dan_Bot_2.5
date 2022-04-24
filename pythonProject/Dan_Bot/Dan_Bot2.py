@@ -19,15 +19,46 @@ from Image_editor import Image_menu
 import random
 import python_weather
 
+from discord.ext import tasks, commands
+
+import datetime
+import pytz
+
+
+
 bot = discord.Bot()
 DanImage = Image_menu()
 
 guild_list = [672572967254753311, 792290455752146954]
 
-
 @bot.event
 async def on_ready():
     print(f"We have logged in as {bot.user}")
+
+
+@tasks.loop(time = datetime.time(15,45,0,0,tzinfo=pytz.timezone("America/Los_Angeles")))
+async def sendmessage(ctx):
+    print("buh")
+    await ctx.send("sent at the set time im too lazy to specify")
+
+@bot.slash_command(name="test", description="sussy baka", guild_ids = guild_list)
+async def loop(ctx):
+
+    current = datetime.datetime.now(tz=pytz.timezone("America/Los_Angeles"))
+    test = datetime.time(15,45,0,0,tzinfo= (pytz.timezone("America/Los_Angeles")))
+    new_line = "\n"
+    await ctx.respond(f'Loop Begin! {new_line} It is currently: {current} {new_line} And a message *should* appear at: {test}')
+    sendmessage.start(ctx)
+
+# import schedule
+# import time
+# @bot.loop
+# async def cum():
+#     def timed_link():
+#         print(f"minute")
+#     print(f"test")
+#     schedule.every(1).minutes.do(timed_link)
+#     schedule.run_pending()
 
 
 # @bot.slash_command(name="timeset", description="Sets the time zone for the time command",guild_ids=[792290455752146954])
@@ -42,6 +73,10 @@ async def on_ready():
 #        time = datetime.now(tz=none)
 #
 #     await ctx.respond(time)
+
+
+
+
 
 
 @bot.slash_command(name="your_avatar", description="Should post an image of your avatar", guild_ids=guild_list)
@@ -164,6 +199,10 @@ async def say_my_name(ctx):
 async def hello(ctx):
     await ctx.respond("World!")
 
+@bot.slash_command(name="everyone", description="annoying", guild_ids=guild_list)
+async def everyone(ctx):
+    await ctx.respond()
+
 @bot.slash_command(name="getweather", description="Tells you the weather",guild_ids=guild_list)
 async def getweather(ctx):
     client = python_weather.Client(format=python_weather.METRIC)  ##makes the client & sets format setting
@@ -177,3 +216,7 @@ async def getweather(ctx):
     await client.close()
 
 bot.run("OTM0MTk2NTUxODU5OTc0MTk1.YeskVg.T6tuw-NYsvqObh9Hku84qlrgHB8")
+
+
+
+##IDEA: make bot put in vc the "its 10:49" meme
