@@ -31,24 +31,49 @@ DanImage = Image_menu()
 
 guild_list = [672572967254753311, 792290455752146954]
 
+intents = discord.Intents.default()
+intents.members = True
+intents.message_content = True
+
+
+
+
+
 @bot.event
 async def on_ready():
     print(f"We have logged in as {bot.user}")
+    game = discord.Game("lean")
+    await bot.change_presence(status=discord.Status.idle, activity=game)
 
+@bot.event
+async def on_message(message):
 
-@tasks.loop(time = datetime.time(15,45,0,0,tzinfo=pytz.timezone("America/Los_Angeles")))
-async def sendmessage(ctx):
-    print("buh")
-    await ctx.send("sent at the set time im too lazy to specify")
+    if message.author.id == bot.user.id:
+        return
+    print(f"detected")
 
-@bot.slash_command(name="test", description="sussy baka", guild_ids = guild_list)
-async def loop(ctx):
+    if message.content.startswith("$valorant"):
+        print(f"win")
+        await message.channel.send('woah he said valorant')
+    else:
+        print(f"no")
+        return
 
-    current = datetime.datetime.now(tz=pytz.timezone("America/Los_Angeles"))
-    test = datetime.time(15,45,0,0,tzinfo= (pytz.timezone("America/Los_Angeles")))
-    new_line = "\n"
-    await ctx.respond(f'Loop Begin! {new_line} It is currently: {current} {new_line} And a message *should* appear at: {test}')
-    sendmessage.start(ctx)
+# @tasks.loop(time = time(15, 38, tzinfo=pytz.timezone("Canada/Central")))
+# async def sendmessage(ctx):
+#     print("buh")
+#     await ctx.send("sent at the set time im too lazy to specify")  (specify channel?)
+#
+# @bot.slash_command(name="test", description="sussy baka", guild_ids = guild_list)
+# async def loop(ctx):
+#
+#     current = time.time.now(tzinfo=pytz.timezone("Canada/Central"))
+#     test = time(15, 38, tzinfo=(pytz.timezone("Canada/Central")))
+#     new_line = "\n"
+#     await ctx.respond(f'Loop Begin! {new_line} It is currently: {current} {new_line} And a message *should* appear at: {test}')
+#     sendmessage.start(ctx)
+
+### ABOVE STUFF WIP
 
 # import schedule
 # import time
@@ -80,11 +105,10 @@ async def loop(ctx):
 
 
 @bot.slash_command(name="your_avatar", description="Should post an image of your avatar", guild_ids=guild_list)
-
 async def your_avatar(ctx):
     profile = await load_image_async(ctx.author.display_avatar.url)
     editor = Editor(profile).circle_image()
-    editor = Editor(profile).resize([200, 200],crop=True)
+    editor = Editor(profile).resize([200, 200], crop=True)
     file = File(fp=editor.image_bytes, filename='imagine reading this lol.png')
     await ctx.respond("Work pls")
     await ctx.send(file=file)
@@ -151,7 +175,7 @@ async def Dice_roll(ctx):
 
     await ctx.respond("Choose a numba?", view=view)
 
-@bot.slash_command(name="cust", description="Gives you the opportunity of a lifetime", guild_ids=guild_list)
+@bot.slash_command(name="cust", description="Random number", guild_ids=guild_list)
 async def Cust(ctx: discord.ApplicationContext,
                         min_val: Option(int, "Minimum value"),
                         max_val: Option(int, "Minimum value")
@@ -195,9 +219,9 @@ async def say_my_name(ctx):
     await ctx.respond(f'Your name is {ctx.author}')
 
 
-@bot.slash_command(guild_ids=guild_list)
-async def hello(ctx):
-    await ctx.respond("World!")
+@bot.slash_command(name="ping",guild_ids=guild_list)
+async def Testing(ctx):
+    await ctx.respond("Pong")
 
 @bot.slash_command(name="everyone", description="annoying", guild_ids=guild_list)
 async def everyone(ctx):
@@ -220,3 +244,5 @@ bot.run("OTM0MTk2NTUxODU5OTc0MTk1.YeskVg.T6tuw-NYsvqObh9Hku84qlrgHB8")
 
 
 ##IDEA: make bot put in vc the "its 10:49" meme
+
+##somebody says valorant ( brimstone dumptruck )
