@@ -50,11 +50,17 @@ async def on_message(message):
 
     if message.author.id == bot.user.id:
         return
+
     print(f"detected")
 
-    if message.content.startswith("$valorant"):
-        print(f"win")
-        await message.channel.send('woah he said valorant')
+    msg = await bot.wait_for('message')
+
+    print(msg)
+
+    if msg == "valorant":
+         print(f"win")
+         await message.channel.send('woah he said valorant')
+
     else:
         print(f"no")
         return
