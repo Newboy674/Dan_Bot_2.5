@@ -9,7 +9,7 @@ Quit with "quit()" to get out of that
 
 TERMINAL:
 Put that in to direct to it:
-cd 'C:\Users\Weird\PycharmProjects\Website Environment\Epic Website\mysite\'
+cd 'C:\Users\Weird\PycharmProjects\Better Website Environment\Epic Website\mysite\'
 
 Make work if possible (rename it)
  - (cd 'C:\Users\Weird\PycharmProjects\Website Environment\Epic_Website\') - Renaming things dont seem 2 work?
