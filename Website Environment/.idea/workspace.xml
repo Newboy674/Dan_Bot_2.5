@@ -18,7 +18,7 @@
     </option>
   </component>
   <component name="Git.Rebase.Settings">
-    <option name="NEW_BASE" value="Leetcode_stuff" />
+    <option name="NEW_BASE" value="wh" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -43,7 +43,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/Weird/PycharmProjects/Website Environment"
+    "last_opened_file_path": "C:/Users/Weird/PycharmProjects/Better Website Environment"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -154,7 +154,21 @@
       <option name="project" value="LOCAL" />
       <updated>1657330749035</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Update 1: first iteration, tryin 2 get runserver to work&#10;&#10;Update 2: second iteration, fixed it by un renaming it dgb">
+      <created>1657331138988</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1657331138988</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Update 1: first iteration, tryin 2 get runserver to work&#10;&#10;Update 2: second iteration, fixed it by un renaming it dgb">
+      <created>1657331194492</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1657331194492</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
