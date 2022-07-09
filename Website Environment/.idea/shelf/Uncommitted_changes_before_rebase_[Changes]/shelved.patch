@@ -1,0 +1,16 @@
+Index: FUTURE ME
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>To get to the Python Files with dan bot and stuff:\r\nclick on \"file\" on the top left, then open, then go to Users > Weird > Pycharm Projects\r\nMake sure the interpreter is right (File > Settings > Project:xxxx > Interpreter) - am using 3.10.5 (2)\r\n\r\n\r\nType in \"python\" in the terminal 2 make sure Ive got the right one (I need python 3.10.5, from Jun 6 2022)\r\nQuit with \"quit()\" to get out of that\r\n\r\n\r\nTERMINAL:\r\nPut that in to direct to it:\r\ncd 'C:\\Users\\Weird\\PycharmProjects\\Website Environment\\Epic Website\\mysite\\'\r\n\r\nMake work if possible (rename it)\r\n - (cd 'C:\\Users\\Weird\\PycharmProjects\\Website Environment\\Epic_Website\\') - Renaming things dont seem 2 work?\r\n\r\nTo turn on the server:\r\npy manage.py runserver\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/FUTURE ME b/FUTURE ME
+--- a/FUTURE ME	(revision d3b8e09ff71c93ec24b8aeacfb71dfc04a603f66)
++++ b/FUTURE ME	(date 1657258938342)
+@@ -17,4 +17,4 @@
+ To turn on the server:
+ py manage.py runserver
+ 
+-
++test
