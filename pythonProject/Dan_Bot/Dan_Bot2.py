@@ -1,8 +1,8 @@
 from os import name
 from datetime import datetime, date, time, timezone, tzinfo, timedelta
 import discord
+import logging
 from discord import File
-from discord import Option
 from discord.ui import Button
 from discord.ui import View
 from discord import guild
@@ -22,21 +22,23 @@ import python_weather
 from discord.ext import tasks, commands
 
 import datetime
-import pytz
+#import pytz
 
 
-
-bot = discord.Bot()
 DanImage = Image_menu()
 
 guild_list = [672572967254753311, 792290455752146954]
 
-intents = discord.Intents.default()
+
+
+intents = discord.Intents.all()
 intents.members = True
 intents.message_content = True
 
+bot = discord.Bot(command_prefix="dan", intents=intents, debug_guilds=guild_list)
+client = discord.Client(intents=intents)
 
-
+logging.basicConfig(level=logging.INFO)
 
 
 @bot.event
@@ -45,66 +47,44 @@ async def on_ready():
     game = discord.Game("lean")
     await bot.change_presence(status=discord.Status.idle, activity=game)
 
-@bot.event
-async def on_message(message):
 
-    if message.author.id == bot.user.id:
+
+@bot.listen()
+async def on_message(message):
+    if message.author.id == bot.user.id:     #Makes bot not respond 2 its own message
         return
 
-    print(f"detected")
+    print('detected')
+    print(f"Message:" + message.content)
 
-    msg = await bot.wait_for('message')
+    Original_message = message.content   # Takes message & scans through the entire thing till it sees valorant
+    remaining = len(Original_message)   # (If doesn't work try (message.content))
+    Current_string = ""
+    v_spot = 0
 
-    print(msg)
 
-    if msg == "valorant":
-         print(f"win")
-         await message.channel.send('woah he said valorant')
+##           W I P !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! (
+
+#           Valorant Brimstone Sender
+    for i in range(remaining):
+        remaining -= 1
+        v_spot = i
+        if (Original_message[i] == "v"):     #If a "v" is detected...
+
+            for x in range(v_spot + 8): # Check to see if it ends with "alorant" starting from found "v"
+                print(v_spot + x)
+                if remaining >= v_spot + x:  #If there are still more letters...
+                      Current_string = Current_string + Original_message[v_spot + x]
+
+
+    print(f"Scanned Outcome:"+Current_string)
+
+    if (Current_string == ('valorant')):
+        print("epic")
+        await message.channel.send('https://cdn.discordapp.com/attachments/774448351503974420/1027772900805193789/unknown.png')
 
     else:
-        print(f"no")
         return
-
-# @tasks.loop(time = time(15, 38, tzinfo=pytz.timezone("Canada/Central")))
-# async def sendmessage(ctx):
-#     print("buh")
-#     await ctx.send("sent at the set time im too lazy to specify")  (specify channel?)
-#
-# @bot.slash_command(name="test", description="sussy baka", guild_ids = guild_list)
-# async def loop(ctx):
-#
-#     current = time.time.now(tzinfo=pytz.timezone("Canada/Central"))
-#     test = time(15, 38, tzinfo=(pytz.timezone("Canada/Central")))
-#     new_line = "\n"
-#     await ctx.respond(f'Loop Begin! {new_line} It is currently: {current} {new_line} And a message *should* appear at: {test}')
-#     sendmessage.start(ctx)
-
-### ABOVE STUFF WIP
-
-# import schedule
-# import time
-# @bot.loop
-# async def cum():
-#     def timed_link():
-#         print(f"minute")
-#     print(f"test")
-#     schedule.every(1).minutes.do(timed_link)
-#     schedule.run_pending()
-
-
-# @bot.slash_command(name="timeset", description="Sets the time zone for the time command",guild_ids=[792290455752146954])
-
-#@bot.slash_Command(name="Roman Converter", description="Give it roman numbers", guild_ids=[792290455752146954])
-
-
-
-# @bot.slash_command(name="time", description="gives the time, based off of the time zone set command", guild_ids=[792290455752146954])
-# async def time(ctx):
-#     if timezone = 0
-#        time = datetime.now(tz=none)
-#
-#     await ctx.respond(time)
-
 
 
 
@@ -181,17 +161,17 @@ async def Dice_roll(ctx):
 
     await ctx.respond("Choose a numba?", view=view)
 
-@bot.slash_command(name="cust", description="Random number", guild_ids=guild_list)
-async def Cust(ctx: discord.ApplicationContext,
-                        min_val: Option(int, "Minimum value"),
-                        max_val: Option(int, "Minimum value")
-                        ):
-
-    if min_val < max_val:
-        number_random = random.randrange(min_val, max_val)
-        await ctx.respond(f'Your random number, from {min_val} to {max_val}, is {number_random}')
-    else:
-        await ctx.respond(f'no')
+# @bot.slash_command(name="cust", description="Random number", guild_ids=guild_list)
+# async def Cust(ctx: discord.ApplicationContext,
+#                         min_val: Option(int, "Minimum value"),
+#                         max_val: Option(int, "Minimum value")
+#                         ):
+#
+#     if min_val < max_val:
+#         number_random = random.randrange(min_val, max_val)
+#         await ctx.respond(f'Your random number, from {min_val} to {max_val}, is {number_random}')
+#     else:
+#         await ctx.respond(f'no')
 
 
 
@@ -245,7 +225,37 @@ async def getweather(ctx):
 
     await client.close()
 
-bot.run("OTM0MTk2NTUxODU5OTc0MTk1.YeskVg.T6tuw-NYsvqObh9Hku84qlrgHB8")
+bot.run("OTM0MTk2NTUxODU5OTc0MTk1.G-PelM.8v_VXMiHGyNSTZQ43H08E9TOZjBiVyhZAS24yA")
+
+
+#    Dead Code Land
+
+#@bot.event
+# async def on_message(message):
+#
+#     if message.author.id == bot.user.id:
+#         return
+#
+#     print(f"detected")
+#
+#     msg = await bot.wait_for('message')
+#
+#     print(msg)
+#
+#     if msg == "valorant":
+#          print(f"win")
+#          await message.channel.send('woah he said valorant')
+#
+#     else:
+#         print(f"no")
+#         return
+#------------------------------------------------
+
+
+
+
+
+
 
 
 
