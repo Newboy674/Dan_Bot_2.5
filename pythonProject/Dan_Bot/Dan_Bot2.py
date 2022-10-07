@@ -66,25 +66,9 @@ async def on_message(message):
     v_spot = 0
 
 
-##           W I P !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! (
-
-
-
-#           Valorant Brimstone Sender
-    for i in range(remaining):
-        remaining -= 1
-        v_spot = i
-        if (Original_message[i] == "v"):     #If a "v" is detected...
-
-            for x in range(v_spot, v_spot + 8): # Check to see if it ends with "alorant" starting from found "v"
-                print(f"scanned value:{x}" )
-                if remaining >= x - v_spot:  #If there are still more letters...
-                      Current_string = Current_string + Original_message[x]
-
-
     print(f"Scanned Outcome:"+Current_string)
 
-    if (Current_string == ('valorant')):
+    if ("valorant" in message.content):
         print("epic")
         await message.channel.send('https://cdn.discordapp.com/attachments/774448351503974420/1027772900805193789/unknown.png')
 
