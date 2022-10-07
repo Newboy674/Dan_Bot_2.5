@@ -76,10 +76,10 @@ async def on_message(message):
         v_spot = i
         if (Original_message[i] == "v"):     #If a "v" is detected...
 
-            for x in range(v_spot + 8): # Check to see if it ends with "alorant" starting from found "v"
-                print(v_spot + x)
-                if remaining >= v_spot + x:  #If there are still more letters...
-                      Current_string = Current_string + Original_message[v_spot + x]
+            for x in range(v_spot, v_spot + 8): # Check to see if it ends with "alorant" starting from found "v"
+                print(f"scanned value:{x}" )
+                if remaining >= x - v_spot:  #If there are still more letters...
+                      Current_string = Current_string + Original_message[x]
 
 
     print(f"Scanned Outcome:"+Current_string)
@@ -230,7 +230,7 @@ async def getweather(ctx):
 
     await client.close()
 
-bot.run("OTM0MTk2NTUxODU5OTc0MTk1.G-PelM.8v_VXMiHGyNSTZQ43H08E9TOZjBiVyhZAS24yA")
+bot.run(bot_key)
 
 
 #    Dead Code Land
