@@ -2,6 +2,11 @@ from os import name
 from datetime import datetime, date, time, timezone, tzinfo, timedelta
 import discord
 import logging
+import random
+import python_weather
+
+from bot_key import bot_key
+
 from discord import File
 from discord.ui import Button
 from discord.ui import View
@@ -16,8 +21,6 @@ from discord.gateway import DiscordClientWebSocketResponse
 from easy_pil import Editor, Canvas, load_image_async
 from Image_editor import Image_menu
 
-import random
-import python_weather
 
 from discord.ext import tasks, commands
 
@@ -64,6 +67,8 @@ async def on_message(message):
 
 
 ##           W I P !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! (
+
+
 
 #           Valorant Brimstone Sender
     for i in range(remaining):

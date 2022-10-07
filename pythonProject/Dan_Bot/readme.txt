@@ -1,5 +1,14 @@
 figure out why did didnt work me
 
+
+
+Currently Does Not Work Cuz Bot Code Was Leaked...
+STEPS:
+
+CHANGE THE BOT KEY
+MAKE GIT IGNORE WORK
+FREE SAILING
+
 wrong
     async def btn1click(interaction: discord.Interaction):
         btn.disabled = True
