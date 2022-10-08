@@ -1,6 +1,8 @@
-from os import name
-from datetime import datetime, date, time, timezone, tzinfo, timedelta
+# from os import name
+# from datetime import datetime, date, time, timezone, tzinfo, timedelta
 import discord
+from discord import Option
+
 import logging
 import random
 import python_weather
@@ -10,21 +12,19 @@ from bot_key import bot_key
 from discord import File
 from discord.ui import Button
 from discord.ui import View
-from discord import guild
-from discord import colour
-from discord import emoji
-# from discord.commands.commands import option
-from discord.ext import commands
-from discord.components import SelectOption
-from discord.commands import slash_command
-from discord.gateway import DiscordClientWebSocketResponse
 from easy_pil import Editor, Canvas, load_image_async
 from Image_editor import Image_menu
 
+# from discord.ext import commands
+# from discord import guild
+# from discord import colour
+# from discord import emoji
+# from discord.commands.commands import option
+# from discord.components import SelectOption
+# from discord.commands import slash_command
+# from discord.ext import tasks, commands
 
-from discord.ext import tasks, commands
-
-import datetime
+#import datetime
 #import pytz
 
 
@@ -48,7 +48,7 @@ logging.basicConfig(level=logging.INFO)
 async def on_ready():
     print(f"We have logged in as {bot.user}")
     game = discord.Game("lean")
-    await bot.change_presence(status=discord.Status.idle, activity=game)
+    await bot.change_presence(status=discord.Status.online, activity=game)
 
 
 
@@ -57,24 +57,23 @@ async def on_message(message):
     if message.author.id == bot.user.id:     #Makes bot not respond 2 its own message
         return
 
-    print('detected')
-    print(f"Message:" + message.content)
+    print(message)
 
-    Original_message = message.content   # Takes message & scans through the entire thing till it sees valorant
-    remaining = len(Original_message)   # (If doesn't work try (message.content))
-    Current_string = ""
-    v_spot = 0
-
-
-    print(f"Scanned Outcome:"+Current_string)
-
-    if ("valorant" in message.content):
+    if (message.content == ('valorant')):
         print("epic")
         await message.channel.send('https://cdn.discordapp.com/attachments/774448351503974420/1027772900805193789/unknown.png')
 
     else:
         return
 
+@bot.listen()
+async def on_message(message):
+    if str(message.author.id) == "1025568758108000296":     #Makes bot only respond to the id of nosentient
+        if (message.content == (f"I'm gonna unplug that fucker!")):
+            await message.channel.send("Fuck You <:kot:1013239145587548232>")
+        return
+    else:
+        return
 
 
 
