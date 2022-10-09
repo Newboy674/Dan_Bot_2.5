@@ -1,7 +1,7 @@
 # from os import name
 # from datetime import datetime, date, time, timezone, tzinfo, timedelta
-#from discord.ext import tasks
-#import python_weather
+# from discord.ext import tasks
+# import python_weather
 # from discord.ext import commands
 # from discord import guild
 # from discord import colour
@@ -24,17 +24,13 @@ from Image_editor import Image_menu
 import typing
 import wavelink
 
-
 from bot_key import bot_key
 import datetime as d
 from datetime import datetime, time, timedelta
 
-
 DanImage = Image_menu()
 
 guild_list = [672572967254753311, 792290455752146954]
-
-
 
 intents = discord.Intents.all()
 intents.members = True
@@ -53,29 +49,31 @@ async def on_ready():
     await bot.change_presence(status=discord.Status.online, activity=game)
 
 
-
 @bot.listen()
 async def on_message(message):
-    if message.author.id == bot.user.id:     #Makes bot not respond 2 its own message
+    if message.author.id == bot.user.id:  # Makes bot not respond 2 its own message
         return
 
     print(message.content)
 
     if (message.content == ('valorant')):
         print("epic")
-        await message.channel.send('https://cdn.discordapp.com/attachments/774448351503974420/1027772900805193789/unknown.png')
+        await message.channel.send(
+            'https://cdn.discordapp.com/attachments/774448351503974420/1027772900805193789/unknown.png')
 
     else:
         return
 
+
 @bot.listen()
 async def on_message(message):
-    if str(message.author.id) == "1025568758108000296":     #Makes bot only respond to the id of nosentient
+    if str(message.author.id) == "1025568758108000296":  # Makes bot only respond to the id of nosentient
         if (message.content == (f"I'm gonna unplug that fucker!")):
             await message.channel.send("Fuck You <:kot:1013239145587548232>")
         return
     else:
         return
+
 
 @bot.slash_command(name="your_avatar", description="Should post an image of your avatar", guild_ids=guild_list)
 async def your_avatar(ctx):
@@ -87,10 +85,7 @@ async def your_avatar(ctx):
     await ctx.send(file=file)
 
 
-
-
-@bot.slash_command(name="roll_dice", description="Rolls a dice up to a specefied number",     guild_ids=guild_list)
-
+@bot.slash_command(name="roll_dice", description="Rolls a dice up to a specefied number", guild_ids=guild_list)
 async def Dice_roll(ctx):
     # Button formatting below
     btn1 = Button(
@@ -114,9 +109,9 @@ async def Dice_roll(ctx):
     # Can be named whatever
     #         l
     #         v
-    async def btn1click(interaction: discord.Interaction): #On click, do the following...
+    async def btn1click(interaction: discord.Interaction):  # On click, do the following...
         btn1.disabled = True
-        btn2.disabled = True # To disable buttons
+        btn2.disabled = True  # To disable buttons
         btn3.disabled = True
         await interaction.response.edit_message(view=view)
         number_roll6 = random.randrange(1, 6)
@@ -134,18 +129,17 @@ async def Dice_roll(ctx):
     async def btn3click(interaction: discord.Interaction):
         btn1.disabled = True
         btn2.disabled = True
-        btn3.disabled = True                                 # Disables button
-        await interaction.response.edit_message(view=view)   # updates that the button was disabled on dcord
+        btn3.disabled = True  # Disables button
+        await interaction.response.edit_message(view=view)  # updates that the button was disabled on dcord
         await interaction.delete_original_message()
         await ctx.respond("Use the /cust command")
-
-
 
     btn1.callback = btn1click  # Assigns the button varible to the button click callback (makes button allign with correct click function)
     btn2.callback = btn2click
     btn3.callback = btn3click
 
     await ctx.respond("Choose a numba?", view=view)
+
 
 # @bot.slash_command(name="cust", description="Random number", guild_ids=guild_list)
 # async def Cust(ctx: discord.ApplicationContext,
@@ -158,7 +152,6 @@ async def Dice_roll(ctx):
 #         await ctx.respond(f'Your random number, from {min_val} to {max_val}, is {number_random}')
 #     else:
 #         await ctx.respond(f'no')
-
 
 
 @bot.slash_command(name="epicbutton", description="Gives you the opportunity of a lifetime", guild_ids=guild_list)
@@ -191,13 +184,110 @@ async def say_my_name(ctx):
     await ctx.respond(f'Your name is {ctx.author}')
 
 
-@bot.slash_command(name="ping",guild_ids=guild_list)
+@bot.slash_command(name="ping", alises=["ping2"], guild_ids=guild_list)  #Get alises to work/find alternative
 async def Testing(ctx):
     await ctx.respond("Pong")
+
 
 @bot.slash_command(name="everyone", description="annoying", guild_ids=guild_list)
 async def everyone(ctx):
     await ctx.respond()
+
+
+# Group Of Play Mechanics
+
+play = bot.create_group("play", "Where does this text go")
+
+
+@play.command(name="nothing", description="Simply Joins The Vc", guild_ids=guild_list, pass_context=True)
+async def join_dop(ctx, search: str):
+    if ctx.author.voice:  # Outputs as true
+        print("joined?")
+        channel = ctx.author.voice.channel
+        await channel.connect()
+        await ctx.respond("Glurb")
+    else:
+        await ctx.respond("Not in a vc :(")
+
+@play.command(name="youtube", description="Plays whatever you type in using youtube", guild_ids=guild_list, pass_context=True)
+async def join_dop(ctx, search: str):
+    if ctx.author.voice:  #Outputs as true
+        print("test")
+        channel = ctx.author.voice.channel
+        await channel.connect()
+        await ctx.respond("Joined Vc...")
+        search = await wavelink.YouTubeTrack.search(query=search, return_first=True)
+
+        if not ctx.voice_client:      #I dont understand this bit...
+            vc: wavelink.Player = await ctx.author.voice.channel.connet(cls=wavelink.Player)   #Credits: https://www.youtube.com/watch?v=REAMABgpmcA
+        else:
+            vc: wavelink.Player = ctx.voice_client
+
+        await vc.play(search)
+# FUTURE ME!!!   GET THOSE NODES WORKING!!!
+
+
+    else:
+        await ctx.respond("Not in a vc :(")
+
+
+@play.command(name="dop", description="I WILL FOLOWWWW YOUUU WHERE. EV-ER YOU GO!", guild_ids=guild_list,
+              pass_context=True)
+async def join_dop(ctx, search: str):
+    if ctx.author.voice:  # Outputs as true
+        print("test")
+        channel = ctx.author.voice.channel
+        await channel.connect()
+        await ctx.respond("Joined Vc...")
+        search = await wavelink.YouTubeTrack.search(query=search, return_first=True)
+
+        if not ctx.voice_client:
+            vc: wavelink.Player = await ctx.author
+    else:
+        await ctx.respond("Not in a vc :(")
+
+
+@bot.slash_command(name="kill", description="Kills Dan Bot :o", guild_ids=guild_list, pass_context=True)
+async def leave_dop(ctx):
+    await ctx.voice_client.disconnect()
+    await ctx.respond(
+        "https://tenor.com/view/24kgoldn-dead-24kgoldn-roblox-24kgoldn-roblox-concert-dead24kgoldn-gif-25222026")
+
+
+# @tasks.loop(seconds=10)
+# async def background_task():      #Makes Dan_Bot Run the 10:49 Postings
+#         print(timedelta(seconds=10))
+#         print("Testing...")
+
+bot.run(bot_key)
+
+# ___________________________________________________________________________________________________________
+# ___________________________________________________________________________________________________________
+
+
+#    Dead Code Land
+
+# @bot.event
+# async def on_message(message):
+#
+#     if message.author.id == bot.user.id:
+#         return
+#
+#     print(f"detected")
+#
+#     msg = await bot.wait_for('message')
+#
+#     print(msg)
+#
+#     if msg == "valorant":
+#          print(f"win")
+#          await message.channel.send('woah he said valorant')
+#
+#     else:
+#         print(f"no")
+#         return
+# ------------------------------------------------
+
 
 # @bot.slash_command(name="getweather", description="Tells you the weather",guild_ids=guild_list)
 # async def getweather(ctx):
@@ -219,64 +309,6 @@ async def everyone(ctx):
 # @bot.command()
 # async def leave(ctx):
 #     await ctx.voice_client.disconnect()
-
-# Group Of Play Mechanics
-
-play = bot.create_group("play", "Where does this text go")
-@play.command(name="dop", description="I WILL FOLOWWWW YOUUU WHERE. EV-ER YOU GO!", guild_ids=guild_list, pass_context=True)
-async def join_dop(ctx):
-    if ctx.author.voice:
-        print("test")
-        channel = ctx.author.voice.channel
-        await channel.connect()
-        await play("https://www.youtube.com/watch?v=7ZtepNkPzcM")
-        await ctx.respond("Glurb")
-    else:
-        await ctx.respond("Not in a vc :(")
-
-@bot.slash_command(name="kill",alises=["exit"], description="I WILL FOLOWWWW YOUUU WHERE. EV-ER YOU GO!", guild_ids=guild_list, pass_context=True)
-async def leave_dop(ctx):
-    await ctx.voice_client.disconnect()
-    await ctx.respond("https://tenor.com/view/24kgoldn-dead-24kgoldn-roblox-24kgoldn-roblox-concert-dead24kgoldn-gif-25222026")
-
-
-# @tasks.loop(seconds=10)
-# async def background_task():      #Makes Dan_Bot Run the 10:49 Postings
-#         print(timedelta(seconds=10))
-#         print("Testing...")
-
-bot.run(bot_key)
-
-
-#    Dead Code Land
-
-#@bot.event
-# async def on_message(message):
-#
-#     if message.author.id == bot.user.id:
-#         return
-#
-#     print(f"detected")
-#
-#     msg = await bot.wait_for('message')
-#
-#     print(msg)
-#
-#     if msg == "valorant":
-#          print(f"win")
-#          await message.channel.send('woah he said valorant')
-#
-#     else:
-#         print(f"no")
-#         return
-#------------------------------------------------
-
-
-
-
-
-
-
 
 
 ##IDEA: make bot put in vc the "its 10:49" meme
