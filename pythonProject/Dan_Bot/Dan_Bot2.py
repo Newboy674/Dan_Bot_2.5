@@ -1,20 +1,7 @@
 # from os import name
 # from datetime import datetime, date, time, timezone, tzinfo, timedelta
-import discord
-from discord import Option
-
-import logging
-import random
-import python_weather
-
-from bot_key import bot_key
-
-from discord import File
-from discord.ui import Button
-from discord.ui import View
-from easy_pil import Editor, Canvas, load_image_async
-from Image_editor import Image_menu
-
+#from discord.ext import tasks
+#import python_weather
 # from discord.ext import commands
 # from discord import guild
 # from discord import colour
@@ -24,8 +11,23 @@ from Image_editor import Image_menu
 # from discord.commands import slash_command
 # from discord.ext import tasks, commands
 
-#import datetime
-#import pytz
+import discord
+
+import logging
+import random
+from discord import File
+from discord.ui import Button
+from discord.ui import View
+from easy_pil import Editor, Canvas, load_image_async
+from Image_editor import Image_menu
+
+import typing
+import wavelink
+
+
+from bot_key import bot_key
+import datetime as d
+from datetime import datetime, time, timedelta
 
 
 DanImage = Image_menu()
@@ -47,7 +49,7 @@ logging.basicConfig(level=logging.INFO)
 @bot.event
 async def on_ready():
     print(f"We have logged in as {bot.user}")
-    game = discord.Game("lean")
+    game = discord.Game("you mom")
     await bot.change_presence(status=discord.Status.online, activity=game)
 
 
@@ -57,7 +59,7 @@ async def on_message(message):
     if message.author.id == bot.user.id:     #Makes bot not respond 2 its own message
         return
 
-    print(message)
+    print(message.content)
 
     if (message.content == ('valorant')):
         print("epic")
@@ -75,9 +77,6 @@ async def on_message(message):
     else:
         return
 
-
-
-
 @bot.slash_command(name="your_avatar", description="Should post an image of your avatar", guild_ids=guild_list)
 async def your_avatar(ctx):
     profile = await load_image_async(ctx.author.display_avatar.url)
@@ -86,7 +85,6 @@ async def your_avatar(ctx):
     file = File(fp=editor.image_bytes, filename='imagine reading this lol.png')
     await ctx.respond("Work pls")
     await ctx.send(file=file)
-
 
 
 
@@ -201,17 +199,51 @@ async def Testing(ctx):
 async def everyone(ctx):
     await ctx.respond()
 
-@bot.slash_command(name="getweather", description="Tells you the weather",guild_ids=guild_list)
-async def getweather(ctx):
-    client = python_weather.Client(format=python_weather.METRIC)  ##makes the client & sets format setting
-    weather = await client.find("London ON")                       ##Gives the client its location
-    temp = weather.current.temperature
-    if temp == 1 or temp == -1:
-         await ctx.respond(f'The weather in London Ontario is probably {temp}° C')
-    else:
-        await ctx.respond (f'The weather in London Ontario is probably {temp}° C')
+# @bot.slash_command(name="getweather", description="Tells you the weather",guild_ids=guild_list)
+# async def getweather(ctx):
+#     client = python_weather.Client(format=python_weather.METRIC)  ##makes the client & sets format setting
+#     weather = await client.find("London ON")                       ##Gives the client its location
+#     temp = weather.current.temperature
+#     if temp == 1 or temp == -1:
+#          await ctx.respond(f'The weather in London Ontario is probably {temp}° C')
+#     else:
+#         await ctx.respond (f'The weather in London Ontario is probably {temp}° C')
+#
+#     await client.close()
 
-    await client.close()
+# @bot.command()
+# async def join(ctx):
+#     channel = ctx.author.voice.channel
+#     await channel.connect()
+#
+# @bot.command()
+# async def leave(ctx):
+#     await ctx.voice_client.disconnect()
+
+# Group Of Play Mechanics
+
+play = bot.create_group("play", "Where does this text go")
+@play.command(name="dop", description="I WILL FOLOWWWW YOUUU WHERE. EV-ER YOU GO!", guild_ids=guild_list, pass_context=True)
+async def join_dop(ctx):
+    if ctx.author.voice:
+        print("test")
+        channel = ctx.author.voice.channel
+        await channel.connect()
+        await play("https://www.youtube.com/watch?v=7ZtepNkPzcM")
+        await ctx.respond("Glurb")
+    else:
+        await ctx.respond("Not in a vc :(")
+
+@bot.slash_command(name="kill",alises=["exit"], description="I WILL FOLOWWWW YOUUU WHERE. EV-ER YOU GO!", guild_ids=guild_list, pass_context=True)
+async def leave_dop(ctx):
+    await ctx.voice_client.disconnect()
+    await ctx.respond("https://tenor.com/view/24kgoldn-dead-24kgoldn-roblox-24kgoldn-roblox-concert-dead24kgoldn-gif-25222026")
+
+
+# @tasks.loop(seconds=10)
+# async def background_task():      #Makes Dan_Bot Run the 10:49 Postings
+#         print(timedelta(seconds=10))
+#         print("Testing...")
 
 bot.run(bot_key)
 
