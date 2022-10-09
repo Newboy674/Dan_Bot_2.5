@@ -1,8 +1,0 @@
-Pokemon (1) Name: Joe Bidedon ---- Type: Fire --- Description: Diciplined in the ways of leading a country, likes mint chocolate icecream
-(1) Name: Testomon    Type: Fire     Description: This is test #14
-(1)  Name: Megafisto     Type: Ground     Description: MEga fisto... Mmmmmmeeeeegafisto ... MEGAFISTO
-(1)  Name: Sex     Type: Phychic     Description: mmmmmm milkers
-(5)  Name: Obamadon     Type: Dragon     Description: All Knowing. All Seeing. God
-(6)  Name: Balls     Type: Water     Description: Jizz but spelt differently
-(7)  Name: Adler Hidolf     Type: Phychic     Description: The most wanted pokemon alive. Known for his weird moushtache
-(8)  Name: Bogus     Type: Normal     Description: Pretty cool
